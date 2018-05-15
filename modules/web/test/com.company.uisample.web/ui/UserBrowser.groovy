@@ -6,6 +6,9 @@ import com.haulmont.masquerade.components.Button
 import com.haulmont.masquerade.components.PopupButton
 import com.haulmont.masquerade.components.Table
 
+/**
+ *This class is the abstraction of the User Browser screen and defines all components to be displayed
+ */
 class UserBrowser extends Composite<UserBrowser> {
 
     @Wire

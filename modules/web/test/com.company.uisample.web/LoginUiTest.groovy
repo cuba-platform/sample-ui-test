@@ -1,6 +1,5 @@
 package com.company.uisample.web
 
-import com.codeborne.selenide.WebDriverRunner
 import com.company.uisample.web.ui.LoginWindow
 import com.haulmont.masquerade.components.Untyped
 import org.junit.Test

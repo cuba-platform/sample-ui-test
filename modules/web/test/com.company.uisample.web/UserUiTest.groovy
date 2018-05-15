@@ -1,6 +1,5 @@
 package com.company.uisample.web
 
-import com.codeborne.selenide.WebDriverRunner
 import com.company.uisample.web.ui.LoginWindow
 import com.company.uisample.web.ui.UserBrowser
 import com.company.uisample.web.ui.UserEditor
@@ -32,7 +31,7 @@ class UserUiTest {
         // run the user creation method from the UserBrowser class
         _$(UserBrowser).createUser()
 
-        // fill required fields in the user editor screens
+        // fill required fields in the user editor screen
         _$(UserEditor).with {
             login.setValue('createdLogin')
             passw.setValue('qO4Hn6o')

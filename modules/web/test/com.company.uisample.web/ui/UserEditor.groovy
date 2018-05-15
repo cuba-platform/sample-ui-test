@@ -9,6 +9,9 @@ import com.haulmont.masquerade.components.PickerField
 import com.haulmont.masquerade.components.Table
 import com.haulmont.masquerade.components.TextField
 
+/**
+ *This class is the abstraction of the User Editor screen and defines all components to be displayed
+ */
 class UserEditor extends Composite<UserEditor> {
 
     @Wire
