@@ -27,4 +27,4 @@ In order to run tests, start the application server and do the following:
 
     gradlew testUi -Dselenide.browser=chrome -Dwebdriver.chrome.driver=<your_path>/chromedriver.exe
 
-where `<your_path>` is the path to the chrome driver on your computer.
+   where `<your_path>` is the path to the chrome driver on your computer.
