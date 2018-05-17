@@ -1,2 +1,30 @@
 # ui-test-sample
 
+This is a small project based on CUBA platform. This application is designed to show the abilities of the _masquerade_ library for the CUBA apps automation Ui tests.
+
+The application project covers the following aspects:
+
+- Simple login test
+   - Example of the LoginWindow class as an abstraction of the Login Window screen
+- Create a new user in the system
+   - Example of the UserBrowser and UserEdit classes as an abstractions of the User Browser and User Edit screens
+
+In order to run tests, start the application server and do the following:
+
+- to run the simple test or the test class you need to edit standard
+  test configuration for the test project in IntelliJ. To do so, click the
+  *Select Run/Debug Configuration* button and select *Edit Configurations*  in the
+  drop-down list. In the VM options field, add the following:
+
+      -Dselenide.browser=chrome -Dwebdriver.chrome.driver=<your_path>/chromedriver.exe
+
+  where `<your_path>` is the path to the chrome driver on your computer.
+
+  After that, select the simple test or the test class you want to run, right
+  click on it and select *Debug* option.
+
+- to run all tests from the command line, use the `testUi` Gradle task:
+
+    gradlew testUi -Dselenide.browser=chrome -Dwebdriver.chrome.driver=<your_path>/chromedriver.exe
+
+where `<your_path>` is the path to the chrome driver on your computer.
