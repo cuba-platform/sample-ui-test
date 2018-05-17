@@ -9,7 +9,13 @@ The application project covers the following aspects:
 - Create a new user in the system
    - Example of the UserBrowser and UserEdit classes as an abstractions of the User Browser and User Edit screens
 
-In order to run tests, start the application server and do the following:
+To start application with Gradle, run the following tasks in the terminal:
+
+    gradle setupTomcat deploy createDb start
+
+To start the application from Studio, click the *(Re)start* button.
+
+In order to run tests, do the following:
 
 - to run the simple test or the test class you need to edit standard
   test configuration for the test project in IntelliJ. To do so, click the
