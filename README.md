@@ -1,4 +1,4 @@
-# ui-test-sample
+# sample-ui-test
 
 This is a small project based on CUBA platform. This application is designed to show features of the [masquerade](https://github.com/cuba-platform/masquerade) library for the CUBA apps automation UI tests.
 
