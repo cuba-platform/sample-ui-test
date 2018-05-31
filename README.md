@@ -9,13 +9,13 @@ The project covers the following aspects:
 - Create a new user in the system
    - Example of UserBrowser and UserEdit classes as an abstractions of the User Browser and User Edit screens
 
-To start application with Gradle, run the following tasks in the terminal:
+Run the following tasks in the terminal to start application with Gradle:
 
 ```
     gradlew setupTomcat deploy createDb start
 ```
 
-To start the application from Studio, click the *(Re)start* button.
+or click the *(Re)start* button to start the application from Studio.
 
 In order to run tests, do the following:
 
