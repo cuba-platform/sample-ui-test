@@ -1,5 +1,6 @@
 package com.company.uisample.web
 
+import com.codeborne.selenide.Configuration
 import com.company.uisample.web.ui.LoginWindow
 import com.haulmont.masquerade.components.Untyped
 import org.junit.Test
@@ -16,7 +17,7 @@ class LoginUiTest {
     @Test
     void loginTest() {
         // open URL of an application
-        open("http://localhost:8080/app")
+        open(Configuration.baseUrl)
 
         // obtain UI object
         LoginWindow loginWindow = _$(LoginWindow.class)
