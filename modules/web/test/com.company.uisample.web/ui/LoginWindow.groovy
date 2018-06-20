@@ -26,11 +26,5 @@ class LoginWindow extends Composite<LoginWindow> {
     Button loginButton
 
     @Wire
-    LookupField localesSelect
-
-    @Wire
     Label welcomeLabel
-
-
-
-    }
+}

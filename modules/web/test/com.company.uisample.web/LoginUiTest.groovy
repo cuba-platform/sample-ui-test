@@ -12,7 +12,6 @@ import static com.haulmont.masquerade.Conditions.*
 
 class LoginUiTest {
 
-
     @Test
     void loginTest() {
         // open URL of an application
@@ -41,10 +40,6 @@ class LoginUiTest {
                 .shouldBe(VISIBLE)
                 .shouldBe(ENABLED)
                 .shouldHave(caption("Submit"))
-
-        // get values from Component
-        String caption = loginWindow.loginButton.getCaption()
-        boolean enabled = loginWindow.loginButton.is(ENABLED)
 
         Untyped loginFormLayout = wire(Untyped.class, "loginFormLayout")
         loginFormLayout.shouldBe(VISIBLE)

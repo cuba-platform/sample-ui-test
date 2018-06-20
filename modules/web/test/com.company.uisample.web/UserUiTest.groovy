@@ -13,9 +13,7 @@ import static com.codeborne.selenide.Selenide.open
 import static com.haulmont.masquerade.Components._$
 import static com.haulmont.masquerade.Selectors.withText
 
-
 class UserUiTest {
-
 
     @Test
     void createSimpleUser() {
@@ -48,5 +46,4 @@ class UserUiTest {
         // close the browser tab
         close()
     }
-
 }
