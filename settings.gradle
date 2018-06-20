@@ -1,4 +1,4 @@
-rootProject.name = 'ui-test-sample'
+rootProject.name = 'sample-ui-test'
 def modulePrefix = 'app'
 include(":${modulePrefix}-global", ":${modulePrefix}-core", ":${modulePrefix}-gui", ":${modulePrefix}-web")
 project(":${modulePrefix}-global").projectDir = new File(settingsDir, 'modules/global')
