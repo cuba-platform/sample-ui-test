@@ -40,3 +40,6 @@ In order to run tests, do the following:
    where `<your_path>` is the path to the chrome driver on your computer.
    
 Based on CUBA Platform 6.8.8
+
+## Issues
+Please use https://www.cuba-platform.com/discuss for discussion, support, and reporting problems coressponding to this sample.
