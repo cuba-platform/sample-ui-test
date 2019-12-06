@@ -1,14 +1,13 @@
 package com.company.uisample.web
 
 import com.company.uisample.web.ui.LoginWindow
-import com.haulmont.masquerade.components.Untyped
 import org.junit.Test
 
 import static com.codeborne.selenide.Selenide.close
 import static com.codeborne.selenide.Selenide.open
-import static com.haulmont.masquerade.Components._$
-import static com.haulmont.masquerade.Components.wire
+
 import static com.haulmont.masquerade.Conditions.*
+import static com.haulmont.masquerade.Selectors.$c
 
 class LoginUiTest {
 
@@ -18,7 +17,7 @@ class LoginUiTest {
         open("http://localhost:8080/app")
 
         // obtain UI object
-        LoginWindow loginWindow = _$(LoginWindow.class)
+        LoginWindow loginWindow = $c(LoginWindow.class)
 
         loginWindow.loginField
                 .shouldBe(EDITABLE)
@@ -40,9 +39,6 @@ class LoginUiTest {
                 .shouldBe(VISIBLE)
                 .shouldBe(ENABLED)
                 .shouldHave(caption("Submit"))
-
-        Untyped loginFormLayout = wire(Untyped.class, "loginFormLayout")
-        loginFormLayout.shouldBe(VISIBLE)
 
         loginWindow.loginButton.click()
 

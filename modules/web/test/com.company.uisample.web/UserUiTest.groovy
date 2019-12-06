@@ -10,7 +10,7 @@ import org.junit.Test
 import static com.codeborne.selenide.Condition.visible
 import static com.codeborne.selenide.Selenide.close
 import static com.codeborne.selenide.Selenide.open
-import static com.haulmont.masquerade.Components._$
+import static com.haulmont.masquerade.Selectors.$c
 import static com.haulmont.masquerade.Selectors.withText
 
 class UserUiTest {
@@ -21,16 +21,16 @@ class UserUiTest {
         open("http://localhost:8080/app")
 
         // login to the application
-        _$(LoginWindow.class).loginButton.click()
+        $c(LoginWindow.class).loginButton.click()
 
         // open application menu item
-        _$(AppMenu).openItem('administration', 'sec$User.browse')
+        $c(AppMenu).openItem('administration', 'sec$User.browse')
 
         // run the user creation method from the UserBrowser class
-        _$(UserBrowser).createUser()
+        $c(UserBrowser).createUser()
 
         // fill required fields in the user editor screen
-        _$(UserEditor).with {
+        $c(UserEditor).with {
             login.setValue('createdLogin')
             passw.setValue('qO4Hn6o')
             confirmPassw.setValue('qO4Hn6o')
@@ -39,7 +39,7 @@ class UserUiTest {
         }
 
         // check that the newly created user appears in the table
-        _$(UserBrowser).usersTable
+        $c(UserBrowser).usersTable
                 .getCell(withText('createdLogin'))
                 .shouldBe(visible)
 

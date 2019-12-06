@@ -15,7 +15,7 @@ Run the following tasks in the terminal to start application with Gradle:
     gradlew setupTomcat deploy createDb start
 ```
 
-or click the *(Re)start* button to start the application from Studio.
+or click the *Start Application Server* option to start the application from Studio.
 
 In order to run tests, do the following:
 
@@ -39,7 +39,7 @@ In order to run tests, do the following:
 
    where `<your_path>` is the path to the chrome driver on your computer.
    
-Based on CUBA Platform 6.8.8
+Based on CUBA Platform 7.1.2
 
 ## Issues
 Please use https://www.cuba-platform.com/discuss for discussion, support, and reporting problems coressponding to this sample.

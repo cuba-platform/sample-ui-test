@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.8.8'
+    ext.cubaVersion = '7.1.2'
     repositories {
         mavenLocal()
         maven {
@@ -23,10 +23,9 @@ def globalModule = project(":${modulePrefix}-global")
 def coreModule = project(":${modulePrefix}-core")
 def webModule = project(":${modulePrefix}-web")
 
-def servletApi = 'org.apache.tomcat:tomcat-servlet-api:8.0.26'
+def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
 
 
-apply(plugin: 'idea')
 apply(plugin: 'cuba')
 
 cuba {
@@ -45,12 +44,11 @@ dependencies {
 
 }
 
-def postgres = 'org.postgresql:postgresql:9.4.1212'
+def postgres = 'org.postgresql:postgresql:42.2.5'
 
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
     apply(plugin: 'maven')
-    apply(plugin: 'idea')
     apply(plugin: 'cuba')
 
     dependencies {
@@ -76,10 +74,20 @@ configure([globalModule, coreModule, webModule]) { // todo bug guiModule
         main { groovy { srcDirs = ["src"] } }
         test { groovy { srcDirs = ["test"] } }
     }
+            sourceSets.main.output.classesDir = new File(project.buildDir, "classes/main")
+            sourceSets.test.output.classesDir = new File(project.buildDir, "classes/test")
 }
 
 configure(globalModule) {
-    task enhance(type: CubaEnhancing)
+    dependencies {
+        if (!JavaVersion.current().isJava8()) {
+            runtime('javax.xml.bind:jaxb-api:2.3.1')
+            runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+        }
+    }
+    entitiesEnhancing {
+        main { enabled = true }
+    }
 
     
 }
@@ -93,7 +101,7 @@ configure(coreModule) {
 
     dependencies {
         compile(globalModule)
-        provided(servletApi)
+        compileOnly(servletApi)
         jdbc(postgres)
         testRuntime(postgres)
 
@@ -138,14 +146,14 @@ configure(webModule) {
     }
 
     dependencies {
-        provided(servletApi)
+        compileOnly(servletApi)
         compile(globalModule)
 
         //the library provides an ability to access web-services, JMX and etc.
-        testCompile('com.haulmont.masquerade:masquerade-connector:1.0.6')
+        testCompile('com.haulmont.masquerade:masquerade-connector:2.0.0')
 
         //the library for the UI testing
-        testCompile('com.haulmont.masquerade:masquerade-web:1.0.6')
+        testCompile('com.haulmont.masquerade:masquerade-web:2.0.0')
 
         // enable logging
         testCompile('org.slf4j:jul-to-slf4j:1.7.25')
@@ -191,7 +199,7 @@ configure(webModule) {
     task testUi(type: Test, dependsOn: testClasses) {
         include('**/*UiTest.class')
         systemProperty 'selenide.browser', System.getProperty('selenide.browser')
-        systemProperty 'webdriver.gecko.driver', System.getProperty('webdriver.gecko.driver')
+        systemProperty 'webdriver.chrome.driver', System.getProperty('webdriver.chrome.driver')
     }
 }
 
@@ -214,8 +222,5 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy", ":${modulePrefi
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.3.1'
-}
 
 
